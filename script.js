@@ -31,6 +31,9 @@ images.forEach((filename) => {
   img.src = `./img/${filename}`;
   preloadedImages.push(img);
 });
+
+new Image().src='./img/loadingscreen.gif'
+
 console.log("images preloaded!");
 
 
@@ -38,10 +41,13 @@ console.log("images preloaded!");
 
 
 btnSubmit.addEventListener("click", ()=> {
-    catResponse.textContent = generateRandomMeows();
-    catPrompt.value = "";
-    generateRandomImage();
+    catResponse.textContent = "";
+    catFace.src = "./img/loadingscreen.gif";
     catResponseDiv.style.display = "flex";
+    setTimeout(()=> {
+        catResponse.textContent = generateRandomMeows();
+        generateRandomImage();
+    }, 500)
 })
 
 btnChangeTheme.addEventListener("click", ()=> {
