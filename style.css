@@ -1,9 +1,22 @@
-:root {
+:root.dark {
+    --color-base-bg: #212121;
+    --color-base-text: #fff;
+    --color-textbox-bg: #303030;
+    --color-textbox-text: #fff;
+    --color-border: #3c3c3c;
+}
 
+:root.light {
+    --color-base-bg: #f6f6f6;
+    --color-base-text: black;
+    --color-textbox-bg: #fff;
+    --color-textbox-text: #212529;
+    --color-border: #ced4da;
 }
 
 html {
     font-family: 'Roboto', sans-serif;
+    color: var(--color-base-text);
 }
 
 body {
@@ -11,6 +24,7 @@ body {
     flex-direction: column;
     margin: 0;
     padding: 0;
+    background-color: var(--color-base-bg);
 }
 
 .header {
@@ -34,6 +48,20 @@ body {
     max-width: 50px;
 }
 
+#change-theme {
+    background-color: var(--color-base-bg);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+       
+}
+
 .prompter {
     width: 100vw;
     display: flex;
@@ -55,21 +83,20 @@ body {
     font-size: 24px;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
+    color: var(--color-textbox-text);
+    background-color: var(--color-textbox-bg);
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--color-border);
     appearance: none;
     border-radius: 12px;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;       
 }
 
 #cat-prompt:focus {
-    color: #212529;
-    background-color: #fff;
-    border-color: #86b7fe;
+    color: var(--color-textbox-text);
+    background-color: var(--color-textbox-bg);
+    border: 1px solid var(--color-border);
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
 }        
 
 #submit-response {
@@ -77,9 +104,7 @@ body {
     color: #F9FAF8;
     font-size: 1.25em;
     font-weight: bold;
-    border: 2px solid;
-    
-    border-color: #F9FAF8;
+    border: none;
     border-radius: 10px;
     padding: 10px 20px;
     margin-bottom: 20px;
