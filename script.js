@@ -25,11 +25,13 @@ root.className = currentTheme;
 
 const preloadedImages = [];
 
+console.log("Preloading images...")
 images.forEach((filename) => {
   const img = new Image();
   img.src = `./img/${filename}`;
   preloadedImages.push(img);
 });
+console.log("images preloaded!");
 
 
 
@@ -68,5 +70,8 @@ function generateRandomMeows() {
 }
 
 function generateRandomImage() {
-    catFace.src = `./img/${images[Math.floor(Math.random() * images.length)]}`;
+    const randomIndex = Math.floor(Math.random() * images.length);
+    const selectedImage = preloadedImages(randomIndex).src;
+    
+    catFace.src = selectedImage;
 }
