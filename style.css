@@ -15,17 +15,17 @@
 }
 
 @media (max-width: 600px) {
-  #logo {
-    max-width: 30px !important;
-    max-height: 30px !important;
-  }
-  #change-theme {
-    height: 30px !important;
-    width: 30px !important;
-  }
-  .title {
-    font-size: 1.3em;
-  }
+    #logo {
+        max-width: 30px !important;
+        max-height: 30px !important;
+    }
+    #change-theme {
+        height: 30px !important;
+        width: 30px !important;
+    }
+    .title {
+        font-size: 1.3rem;
+    }
 }
 
 html {
@@ -46,7 +46,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25em;
+    font-size: 1.25rem;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     gap: 5px;
@@ -77,16 +77,16 @@ body {
 }
 
 .prompter {
-    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     flex: 2;
     gap: 20px;
+    padding: 30px;
 }
 
 .input-label {
-    font-size: 2em;
+    font-size: 2rem;
     font-weight: 500;
     text-align: center;
 }
@@ -116,7 +116,7 @@ body {
 #submit-response {
     background-color: #0faa4b;
     color: #F9FAF8;
-    font-size: 1.25em;
+    font-size: 1.25rem;
     font-weight: bold;
     border: none;
     border-radius: 10px;
@@ -132,7 +132,7 @@ body {
     display: none;
     flex-direction: column;
     align-items: center;
-    font-size: 1.6em;
+    font-size: 1.6rem;
     margin-bottom: 50px;
     gap: 20px;
     padding: 20px;
