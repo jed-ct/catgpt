@@ -8,7 +8,7 @@ const btnChangeTheme = document.getElementById("change-theme");
 const themeLogo = document.getElementById("change-theme-logo");
 const root = document.documentElement;
 const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-const images = ["angry.jpg", "happy.jpg", "sad.jpeg", "serious.jpg", "oia-uia.gif", "dog.jpg", "ermactually.png", "eyebrow.png", "gigachad.jpeg", "jwu.png", "nooo.png", "sad2.jpg", "serious2.jpeg"];
+const images = ["angry.jpg", "happy.jpg", "sad.jpeg", "serious.jpg", "oia-uia.gif", "dog.jpg", "ermactually.png", "eyebrow.png", "gigachad.jpeg", "jwu.png", "nooo.png", "sad2.jpg", "serious2.jpeg", "like.png", "milk.png", "shocked.png"];
 
 let currentTheme = "";
 
