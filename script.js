@@ -71,7 +71,7 @@ function generateRandomMeows() {
 
 function generateRandomImage() {
     const randomIndex = Math.floor(Math.random() * images.length);
-    const selectedImage = preloadedImages(randomIndex).src;
-    
+    const selectedImage = preloadedImages[randomIndex].src;
+
     catFace.src = selectedImage;
 }
