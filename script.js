@@ -7,8 +7,10 @@ const catLogo = document.getElementById("logo");
 const btnChangeTheme = document.getElementById("change-theme");
 const themeLogo = document.getElementById("change-theme-logo");
 const root = document.documentElement;
-let currentTheme = "";
 const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+const images = ["angry.jpg", "happy.jpg", "sad.jpeg", "serious.jpg", "oia-uia.gif", "dog.jpg", "ermactually.png", "eyebrow.png", "gigachad.jpeg", "jwu.png", "nooo.png", "sad2.jpg", "serious2.jpeg"];
+
+let currentTheme = "";
 
 if (darkThemeMq.matches) {
     currentTheme = "dark";
@@ -19,8 +21,19 @@ if (darkThemeMq.matches) {
     catLogo.src = "./icons/logo.svg";
     themeLogo.src = "./icons/light.svg";
 }
-
 root.className = currentTheme;
+
+const preloadedImages = [];
+
+images.forEach((filename) => {
+  const img = new Image();
+  img.src = `./img/${filename}`;
+  preloadedImages.push(img);
+});
+
+
+
+
 
 btnSubmit.addEventListener("click", ()=> {
     catResponse.textContent = generateRandomMeows();
@@ -55,6 +68,5 @@ function generateRandomMeows() {
 }
 
 function generateRandomImage() {
-    let images = ["angry.jpg", "happy.jpg", "sad.jpeg", "serious.jpg", "oia-uia.gif", "dog.jpg", "ermactually.png", "eyebrow.png", "gigachad.jpeg", "jwu.png", "nooo.png", "sad2.jpg", "serious2.jpeg"];
     catFace.src = `./img/${images[Math.floor(Math.random() * images.length)]}`;
 }
