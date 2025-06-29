@@ -96,6 +96,8 @@ body {
     font-size: 1.6em;
     margin-bottom: 50px;
     gap: 20px;
+    padding: 20px;
+    text-align: center;
 }
 
 #cat-face {
