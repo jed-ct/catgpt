@@ -8,15 +8,21 @@
 </head>
 <body>
     <div class="header">
+        <img id="logo" src="./img/logo.svg">
         <h1 class="title">CatGPT</h1>
+
     </div>
+    <div class="prompter">
+        <div class="input-label">Ano ang gusto mong sabihin kay Muning?</div>
     <form>
-        <label for="cat-prompt">What do you want to say?</label>
-        <input type="text" id="cat-prompt"> 
+        <input type="text" id="cat-prompt" placeholder="Meow meow..."> 
     </form>
-    <button id="submit-response">Submit</button>
-    <img id="cat-face" src="">
-    <div id="cat-response"></div>
+        <button id="submit-response">Sabihin!</button>
+    </div>
+    <div id="response">
+        <div><b>Sabi ni Muning:</b> <span id="cat-response"></span></div>
+        <img id="cat-face" src="">
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

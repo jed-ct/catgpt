@@ -1,3 +1,7 @@
+:root {
+
+}
+
 html {
     font-family: 'Roboto', sans-serif;
 }
@@ -9,7 +13,91 @@ body {
     padding: 0;
 }
 
+.header {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25em;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    gap: 5px;
+}
+
+.title {
+    margin: 0;
+}
+
+#logo {
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.prompter {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 2;
+    gap: 20px;
+}
+
+.input-label {
+    font-size: 2em;
+    font-weight: 500;
+}
+
+#cat-prompt {
+    width: 700px;
+    padding: 6px 12px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 12px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;       
+}
+
+#cat-prompt:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}        
+
+#submit-response {
+    background-color: #0faa4b;
+    color: #F9FAF8;
+    font-size: 1.25em;
+    font-weight: bold;
+    border: 2px solid;
+    
+    border-color: #F9FAF8;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+#submit-response:hover {
+    background-color: #0e883d;
+}
+
+#response {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.6em;
+    margin-bottom: 50px;
+    gap: 20px;
+}
+
 #cat-face {
     width: 300px;
     height: 300px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
