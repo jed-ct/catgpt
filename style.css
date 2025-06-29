@@ -126,6 +126,7 @@ body {
 
 #submit-response:hover {
     background-color: #0e883d;
+    cursor: pointer;
 }
 
 #response {
