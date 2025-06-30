@@ -37,9 +37,6 @@ new Image().src='./img/loadingscreen.gif'
 console.log("images preloaded!");
 
 
-
-
-
 btnSubmit.addEventListener("click", ()=> {
     catResponse.textContent = "";
     catFace.src = "./img/loadingscreen.gif";
@@ -49,6 +46,7 @@ btnSubmit.addEventListener("click", ()=> {
         generateRandomImage();
     }, 500)
 })
+
 
 btnChangeTheme.addEventListener("click", ()=> {
     if (currentTheme == "light") {
