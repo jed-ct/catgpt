@@ -14,11 +14,9 @@ let currentTheme = "";
 
 if (darkThemeMq.matches) {
     currentTheme = "dark";
-    catLogo.src = "./icons/logo-dark.svg";
     themeLogo.src = "./icons/dark.svg";
 } else {
     currentTheme = "light";
-    catLogo.src = "./icons/logo.svg";
     themeLogo.src = "./icons/light.svg";
 }
 root.className = currentTheme;
@@ -51,12 +49,10 @@ btnSubmit.addEventListener("click", ()=> {
 btnChangeTheme.addEventListener("click", ()=> {
     if (currentTheme == "light") {
         themeLogo.src = "./icons/dark.svg";
-        catLogo.src = "./icons/logo-dark.svg";
         currentTheme = "dark";
     }
     else {
         themeLogo.src = "./icons/light.svg";
-        catLogo.src = "./icons/logo.svg";
         currentTheme = "light";        
     }
     root.className = currentTheme;
