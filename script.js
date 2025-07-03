@@ -30,19 +30,27 @@ images.forEach((filename) => {
   preloadedImages.push(img);
 });
 
-new Image().src='./img/loadingscreen.gif'
-
 console.log("images preloaded!");
 
 
 btnSubmit.addEventListener("click", ()=> {
+    const question = "topic"
     catResponse.textContent = "";
-    catFace.src = "./img/loadingscreen.gif";
-    catResponseDiv.style.display = "flex";
-    setTimeout(()=> {
-        catResponse.textContent = generateRandomMeows();
-        generateRandomImage();
+    catFace.src = preloadedImages[images.length];
+    catResponseDiv.style.display = "flex";    
+
+    if (catPrompt.value == question) {
+        setTimeout(()=> {
+            catResponse.textContent = "mga hayop sa larangan ng video games";;
+            catFace.src = "./img/ermactually.png"
     }, 500)
+    }
+    else {
+        setTimeout(()=> {
+            catResponse.textContent = generateRandomMeows();
+            generateRandomImage();
+        }, 500)
+    }
 })
 
 
