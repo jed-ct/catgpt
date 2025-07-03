@@ -36,7 +36,8 @@ console.log("images preloaded!");
 btnSubmit.addEventListener("click", ()=> {
     const question = "topic"
     catResponse.textContent = "";
-    catFace.src = preloadedImages[images.length];
+    console.log(preloadedImages.length)
+    catFace.src = preloadedImages[preloadedImages.length - 1].src;
     catResponseDiv.style.display = "flex";    
 
     if (catPrompt.value == question) {
