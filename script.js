@@ -36,10 +36,8 @@ console.log("images preloaded!");
 btnSubmit.addEventListener("click", ()=> {
     const question = "topic"
     catResponse.textContent = "";
-    console.log(preloadedImages.length)
     catFace.src = preloadedImages[preloadedImages.length - 1].src;
     catResponseDiv.style.display = "flex";    
-
     if (catPrompt.value == question) {
         setTimeout(()=> {
             catResponse.textContent = "mga hayop sa larangan ng video games";;
@@ -47,10 +45,10 @@ btnSubmit.addEventListener("click", ()=> {
     }, 500)
     }
     else {
-        setTimeout(()=> {
-            catResponse.textContent = generateRandomMeows();
-            generateRandomImage();
-        }, 500)
+        (async () => {
+            let response = await getGeminiResponse(catPrompt.value);
+            generateReaction(response.toLowerCase());
+        })();
     }
 })
 
@@ -78,9 +76,95 @@ function generateRandomMeows() {
     return catResponse;
 }
 
-function generateRandomImage() {
+function generateRandomImage(emotion) {
     const randomIndex = Math.floor(Math.random() * (images.length - 1));
     const selectedImage = preloadedImages[randomIndex].src;
     catFace.src = selectedImage;
     console.log("reaction image: " + selectedImage);
 }
+//happy, sad, angry, fear, shocked, or curious
+function generateReaction(emotion) {
+    emotion = emotion.trim().toLowerCase();
+    console.log(emotion);
+    if (emotion == "happy") {
+        catFace.src = "./img/happy.jpg";
+        catResponse.textContent = "Meow! Meow! *Nagtumbling*";   
+    }
+
+    else if (emotion == "sad") {
+        catFace.src = "./img/sad2.jpg";
+        catResponse.textContent = "meowww :(((";  
+    }
+
+    else if (emotion == "angry") {
+        catFace.src = "./img/angry.jpg";
+        catResponse.textContent = "Meow! Meow! *nagdabog*";  
+    }
+
+    else if (emotion == "fear") {
+        catFace.src = "./img/nooo.png";
+        catResponse.textContent = "M-M-Meow...";  
+    }
+
+    else if (emotion == "shocked") {
+        catFace.src = "./img/shocked.png";
+        catResponse.textContent = "MEOW!";  
+    }
+
+    else if (emotion == "curious") {
+        catFace.src = "./img/eyebrow.png";
+        catResponse.textContent = "meow meow meow?";  
+    }
+    else {
+        generateRandomImage();
+        catResponse.textContent = "meow? *di na-gets*";
+    }
+}
+
+
+async function getGeminiResponse(prompt) {
+    // DO NOT USE PLEASE PLEASE HINDI PA AKO MARUNONG MAG BACKEND TO HIDE IT. CATGPT IS FOR DEMONSTRATION PURPOSES ONLY.
+    const apiKey = "AIzaSyCmABv2zfQ0LdA3GKj1sHEBOJWsDnsvqmw"; 
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+    // Prepare the payload for the API
+    const payload = {
+        contents: [{
+            role: "user",
+            parts: [{ text: `You are a cat. A user sends you a message, and you reply only with one of the following emotions that best fits your cat reaction: happy, sad, angry, fear, shocked, curious or notclear. Reply with the lowercase word only. This is the message:${prompt}` }]
+        }]
+    };
+
+    try {
+        // Make the API call
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        // Check if the request was successful
+        if (!response.ok) {
+            const errorBody = await response.text();
+            throw new Error(`API request failed with status ${response.status}: ${errorBody}`);
+        }
+
+        const result = await response.json();
+
+        // Extract and return the text from the response
+        if (result.candidates && result.candidates[0]?.content?.parts[0]?.text) {
+            return result.candidates[0].content.parts[0].text;
+        } else {
+            // Handle cases where the response structure is unexpected
+            return "Sorry, the response from the API was not in the expected format.";
+        }
+
+    } catch (error) {
+        console.error('Error calling Gemini API:', error);
+        // In case of an error, return an error message string
+        return `An error occurred: ${error.message}`;
+    }
+}
+
