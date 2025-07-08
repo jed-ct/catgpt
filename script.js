@@ -34,7 +34,7 @@ console.log("images preloaded!");
 
 
 btnSubmit.addEventListener("click", ()=> {
-    const question = "topic"
+    const question = "ano ang topic natin ngayon?"
     catResponse.textContent = "";
     catFace.src = preloadedImages[preloadedImages.length - 1].src;
     catResponseDiv.style.display = "flex";    
@@ -88,7 +88,7 @@ function generateReaction(emotion) {
     console.log(emotion);
     if (emotion == "happy") {
         catFace.src = "./img/happy.jpg";
-        catResponse.textContent = "Meow! Meow! *Nagtumbling*";   
+        catResponse.textContent = "Meow! Meowieeee! *Nagtumbling*";   
     }
 
     else if (emotion == "sad") {
@@ -110,14 +110,17 @@ function generateReaction(emotion) {
         catFace.src = "./img/shocked.png";
         catResponse.textContent = "MEOW!";  
     }
-
+    else if (emotion == "disgust") {
+        catFace.src = "./img/disgust.jpg";
+        catResponse.textContent = "Meooowwwgh...";  
+    }
     else if (emotion == "curious") {
-        catFace.src = "./img/eyebrow.png";
+        catFace.src = "./img/curious.jpeg";
         catResponse.textContent = "meow meow meow?";  
     }
     else {
         generateRandomImage();
-        catResponse.textContent = "meow? *di na-gets*";
+        catResponse.textContent = "meow... *di na-gets*";
     }
 }
 
@@ -125,13 +128,13 @@ function generateReaction(emotion) {
 async function getGeminiResponse(prompt) {
     // DO NOT USE PLEASE PLEASE HINDI PA AKO MARUNONG MAG BACKEND TO HIDE IT. CATGPT IS FOR DEMONSTRATION PURPOSES ONLY.
     const apiKey = "AIzaSyCmABv2zfQ0LdA3GKj1sHEBOJWsDnsvqmw"; 
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite-preview-06-17:generateContent?key=${apiKey}`;
 
     // Prepare the payload for the API
     const payload = {
         contents: [{
             role: "user",
-            parts: [{ text: `You are a cat. A user sends you a message, and you reply only with one of the following emotions that best fits your cat reaction: happy, sad, angry, fear, shocked, curious or notclear. Reply with the lowercase word only. This is the message:${prompt}` }]
+            parts: [{ text: `You are a cat. A user sends you a message, and you reply only with one of the following emotions that best fits your cat reaction: happy, sad, angry, fear, shocked, curious, disgust, or notclear. Reply with the lowercase word only. This is the message:${prompt}` }]
         }]
     };
 
