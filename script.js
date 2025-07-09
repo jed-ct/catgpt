@@ -21,14 +21,27 @@ if (darkThemeMq.matches) {
 }
 root.className = currentTheme;
 
-const preloadedImages = [];
+function preloadImages(imageList) {
+    const images = [];
+    for (let src of imageList) {
+        const img = new Image();
+        img.src = `./img/${src}`;
+        images.push(img); // optionally store in case you need it
+    }
+}
 
-console.log("Preloading images...")
-images.forEach((filename) => {
-  const img = new Image();
-  img.src = `./img/${filename}`;
-  preloadedImages.push(img);
-});
+// Combine all emotion image arrays into one
+const allReactionImages = [
+    "happy.jpg", "happy2.jpg", "happy3.jpg",
+    "sad.jpeg", "sad2.jpg", "sad3.jpg", "sad4.jpg",
+    "angry.jpg", "angry2.jpg", "angry3.jpg",
+    "scared.png", "scared2.jpg", "scared3.png",
+    "shocked.png", "shocked2.jpg", "shocked3.jpg",
+    "disgust.jpg", "disgust2.jpg", "disgust3.jpg",
+    "curious.jpeg", "curious2.jpg", "curious3.jpg", "curious4.jpg"
+];
+
+preloadImages(allReactionImages);
 
 console.log("images preloaded!");
 
@@ -86,37 +99,42 @@ function generateRandomImage(emotion) {
 function generateReaction(emotion) {
     emotion = emotion.trim().toLowerCase();
     console.log(emotion);
-    if (emotion == "happy") {
-        catFace.src = "./img/happy.jpg";
-        catResponse.textContent = "Meow! Meowieeee! *Nagtumbling*";   
-    }
 
-    else if (emotion == "sad") {
-        catFace.src = "./img/sad2.jpg";
-        catResponse.textContent = "meowww :(((";  
-    }
-
-    else if (emotion == "angry") {
-        catFace.src = "./img/angry.jpg";
-        catResponse.textContent = "Meow! Meow! *nagdabog*";  
-    }
-
-    else if (emotion == "fear") {
-        catFace.src = "./img/nooo.png";
-        catResponse.textContent = "M-M-Meow...";  
-    }
-
-    else if (emotion == "shocked") {
-        catFace.src = "./img/shocked.png";
-        catResponse.textContent = "MEOW!";  
-    }
-    else if (emotion == "disgust") {
-        catFace.src = "./img/disgust.jpg";
-        catResponse.textContent = "Meooowwwgh...";  
-    }
-    else if (emotion == "curious") {
-        catFace.src = "./img/curious.jpeg";
-        catResponse.textContent = "meow meow meow?";  
+    const reactions = {
+        happy: {
+            images: ["happy.jpg", "happy2.jpg", "happy3.jpg"],
+            text: "Meow! Meowieeee! *Nagtumbling*"
+        },
+        sad: {
+            images: ["sad.jpeg", "sad2.jpg", "sad3.jpg", "sad4.jpg"],
+            text: "meowww :((("
+        },
+        angry: {
+            images: ["angry.jpg", "angry2.jpg", "angry3.jpg"],
+            text: "Meow! Meow! *nagdabog*"
+        },
+        fear: {
+            images: ["scared.png", "scared2.jpg", "scared3.png", "shocked.png", "shocked2.jpg", "shocked3.jpg"],
+            text: "M-M-Meow..."
+        },
+        shocked: {
+            images: ["shocked.png", "shocked2.jpg", "shocked3.jpg"],
+            text: "MEOW!"
+        },
+        disgust: {
+            images: ["disgust.jpg", "disgust2.jpg", "disgust3.jpg"],
+            text: "Meooowwwgh..."
+        },
+        curious: {
+            images: ["curious.jpeg", "curious2.jpg", "curious3.jpg", "curious4.jpg"],
+            text: "meow meow meow?"
+        }
+    };
+    const reaction = reactions[emotion];
+    if (reaction) {
+        const randomImage = reaction.images[Math.floor(Math.random() * reaction.images.length)];
+        catFace.src = `./img/${randomImage}`;
+        catResponse.textContent = reaction.text;
     }
     else {
         generateRandomImage();
