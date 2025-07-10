@@ -30,13 +30,26 @@ function preloadImages(imageList) {
     }
 }
 
+// Combine all emotion image arrays into one
+const allReactionImages = [
+    "happy.jpg", "happy2.jpg", "happy3.jpg",
+    "sad.jpeg", "sad2.jpg", "sad3.jpg", "sad4.jpg",
+    "angry.jpg", "angry2.jpg", "angry3.jpg",
+    "scared.png", "scared2.jpg", "scared3.png",
+    "shocked.png", "shocked2.jpg", "shocked3.jpg",
+    "disgust.jpg", "disgust2.jpg", "disgust3.jpg",
+    "curious.jpeg", "curious2.jpg", "curious3.jpg", "curious4.jpg"
+];
+
+preloadImages(allReactionImages);
+
 console.log("images preloaded!");
 
 
 btnSubmit.addEventListener("click", ()=> {
     const question = "ano ang topic natin ngayon?"
     catResponse.textContent = "";
-    catFace.src = preloadedImages[preloadedImages.length - 1].src;
+    catFace.src = "./img/loadingscreen.gif"
     catResponseDiv.style.display = "flex";    
     if (catPrompt.value == question) {
         setTimeout(()=> {
